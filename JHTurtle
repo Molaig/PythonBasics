@@ -1,0 +1,23 @@
+import turtle
+import math
+
+# Add your code below!
+
+wn = turtle.Screen()
+
+wn.bgcolor('#002a4a')
+
+jh = turtle.Turtle()
+jh.penup()
+jh.goto(0,-160)
+jh.pendown()
+jh.pencolor('#FFFFFF')
+jh.fillcolor('#FFCB05')
+
+jh.speed(100)
+
+i = 1
+while i<1000:
+    jh.forward(i+i+i)
+    jh.left(i)
+    i += 1
