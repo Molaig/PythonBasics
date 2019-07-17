@@ -1,0 +1,150 @@
+#program by GJ Streelman to calculate utlimate change
+"""
+Instructor Challenge
+Thanks for applying to be an instructor at Code Platoon! The first step is to take a coding challenge. Please fork this repo, finish it on your own, open a pull request against this repository's master branch and tag @jyoung217 to let us know when you're finished.
+
+Optimal Change
+You are writing a computer program to calculate the optimal change for an item's cost using object orientation. Feel free to use Javascript, Ruby, or Python to answer this question. You must also have unit tests to verify your code works as you expect.
+
+Some specs:
+
+You will create a ChangeMaker class that will be initialized with a total price and the amount a user paid
+You're not limited to any number of methods, but the one we'll be looking at will be your optimal_change method which will operate as follows (the following example is in Python):
+change_maker = ChangeMaker(62.13, 100)
+change_maker.optimal_change()
+> "The optimal change for an item that costs $62.13 with an amount paid of $100 is 1 $20 bill, 1 $10 bill, 1 $5 bill, 2 $1 bills, 3 quarters, 1 dime, and 2 pennies."
+
+change_maker2 = ChangeMaker(31.51, 50)
+change_maker2.optimal_change()
+> "The optimal change for an item that costs $31.51 with an amount paid of $50 is 1 $10 bill, 1 $5 bill, 3 $1 bills, 1 quarter, 2 dimes, and 4 pennies."
+Remember
+Don't forget to account for plural denominations (i.e., quarters, dimes, pennies, bills) and punctuation (i.e., commas and the period at the end of a sentence) to delineate between different denominations.
+This is optimal change. Obviously, you can give the change in pennies, but we're looking for the most optimal (least amount of) change possible.
+Write at least 3-4 unit tests. Feel free to start with the two examples above!
+"""
+class ChangeMaker:
+    ## initialize the function
+    def __init__ (self, bill, paid):
+        self.bill = bill
+        self.paid = paid
+
+    ## test the function recieved values
+    """
+    def prnt(self):
+        print("The bill was " + str(self.bill) + " make change from " + str(self.paid) + " nned to make change for " + str(self.paid - self.bill))
+    """
+
+    ## calculate change
+    def optimal_change(self):
+        self.change = self.paid - self.bill
+        hunds = 0
+        twnty = 0
+        tens = 0
+        fives = 0
+        ones = 1
+        qtr = 0
+        dimes = 0
+        nkl = 0
+        pny = 0
+        #print(str(self.change))
+        print("The optimal change for an item that costs " + str(self.bill) + " with an amount paid of " + str(self.paid) + " is " , end = " ")
+        while (self.change > 0): 
+            # print(self.change)
+            while self.change > 100:
+                hunds += 1
+                self.change -= 100
+                #print("huns : " + str(hunds))
+            while self.change > 20:
+                twnty += 1
+                self.change -= 20
+                #print("huns : " + str(twnty))
+            while self.change > 10:
+                tens += 1
+                self.change -= 10
+                #print("Tens : " + str(tens))
+            while self.change > 5:
+                fives += 1
+                self.change -= 5
+                #print("Fives : " + str(fives))
+            while self.change > 1:
+                ones += 1
+                self.change -= 1
+                #print("Fives : " + str(ones))
+            while self.change > .25:
+                qtr += 1
+                self.change -= .25
+                #print("Quarters : " + str(str))
+            while self.change > .10:
+                dimes += 1
+                self.change -= .10
+                #print("Dimes : " + str(dimes))
+            while self.change > .05:
+                nkl += 1
+                self.change -= .05
+                #print("Nikklles : " + str(nkl))
+            while self.change > 0:
+                pny += 1
+                self.change -= .01
+                #print("Pennies : " + str(pny))
+
+            #self.change-=10
+
+        #print change
+        if (hunds>1):
+            print(str(hunds) + " $100 bills ", end = " ")
+        elif(hunds==1):
+            print(str(hunds) + " $100 bill ", end = " ")
+
+        if (twnty>1):
+            print(str(twnty) + " $20 bills ", end = " ")
+        elif(tens==1):
+            print(str(twnty) + " $20 bill ", end = " ")
+            
+        if (tens>1):
+            print(str(tens) + " $10 bills ", end = " ")
+        elif(tens==1):
+            print(str(tens) + " $10 bill ", end = " ")
+
+        if (fives>1):
+            print(str(fives) + " $5 bills ", end = " ")
+        elif(fives==1):
+            print(str(fives) + " $5 bill ", end = " ")
+
+        if (ones>1):
+            print(str(ones) + " $1 bills ", end = " ")
+        elif(ones==1):
+            print(str(ones) + " $1 bill ", end = " ")
+
+        
+        if (qtr>1):
+            print(str(ones) + " quarters ", end = " ")
+        elif(str==1):
+            print(str(ones) + " quarter ", end = " ")
+
+        if (dimes>1):
+            print(str(dimes) + " dimes ", end = " ")
+        elif(dimes==1):
+            print(str(dimes) + " dime ", end = " ")
+
+        if (nkl>1):
+            print(str(qtr) + " nickels ", end = " ")
+        elif(nkl==1):
+            print(str(qtr) + " nickel ", end = " ")
+
+        if (pny>1):
+            print(" and " + str(pny) + " pennies ")
+        elif(pny==1):
+            print(" and " + str(pny) + " penny ")
+            
+        print("")
+
+
+        
+change_maker = ChangeMaker(62.13,1000)
+change_maker.optimal_change()
+
+change_maker2 = ChangeMaker(62.13,100)
+change_maker2.optimal_change()
+
+change_maker3 = ChangeMaker(31.51, 50)
+change_maker3.optimal_change()
