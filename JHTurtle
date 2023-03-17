@@ -17,7 +17,7 @@ jh.fillcolor('#FFCB05')
 jh.speed(100)
 
 i = 1
-while i<1000:
+while i<100:
     jh.forward(i+i+i)
     jh.left(i)
     i += 1
